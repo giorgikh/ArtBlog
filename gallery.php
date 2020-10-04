@@ -179,26 +179,6 @@ while ($row = mysqli_fetch_all($res)) {
     <!--  start -->
     <div class="col-xl-10">
       <div id="test" class="gallery " style="padding: 20px !important; width: 100%;">
-        <!-- <div id="test1">
-          <a href="images/image1.jpg" data-lightbox="mygallery" data-title="ზეთი ტილო 40/50 ავტორი: მარიამ ნადარიაია"><img src="images/image1.jpg"></a>
-          <a href="images/image11.jpg" data-lightbox="mygallery" data-title="მასალა: მუყაო. ზეთი. ზომა: 42x33. ასლი გ.გოგოლაური ავტორი ქეთი მაისო"><img src="images/image11.jpg"></a>
-          <a href="images/image12.jpg" data-lightbox="mygallery" data-title="ტილო, ზეთი. ზომა: 87x70 ავტორი: ავთანდილ ხააზარაძე"><img src="images/image12.jpg"></a>
-          <a href="images/image10.jpg" data-lightbox="mygallery" data-title="ფისო. ავტორი: ანა ხოფერია"><img src="images/image10.jpg"></a>
-        </div>
-
-        <div id="test2">
-          <a href="images/image2.jpg" data-lightbox="mygallery" data-title="ტილო, გუაში ავტორი: ქეთი კაიშაური"><img src="images/image2.jpg"></a>
-          <a href="images/image5.jpg" data-lightbox="mygallery" data-title="ნიღბები. შესრულებულია ბიაზზე აკრილი/გუაში 61x41,5 ავტორი: ბექა ხოფერია"><img src="images/image5.jpg"></a>
-          <a href="images/image7.jpg" data-lightbox="mygallery" data-title="ფარშევანგი. მასალა:გუაში ზომა:73x54 ავტორი: დავით შაინიძე 10 წლის"><img src="images/image7.jpg"></a>
-          <a href="images/image9.jpg" data-lightbox="mygallery" data-title="ლინდა. სერიიდან: გამასერინე. ავტორი: ანა ხოფერია"><img src="images/image9.jpg"></a>
-        </div>
-
-        <div id="test3">
-          <a href="images/image3.jpg" data-lightbox="mygallery" data-title="მთვარე. შესრულებულია დაგრუნტულ მუყაოზე აკრილის საღებავით 95,5x70 ავტორი: ბექა ხოფერია"><img src="images/image3.jpg"></a>
-          <a href="images/image4.jpg" data-lightbox="mygallery" data-title="პოეზია. შესრულებულია დაგრუნტულ მუყაოზე აკრილის საღებავით. 70x48,5 ავტორი: ბექა ხოფერია"><img src="images/image4.jpg"></a>
-          <a href="images/image6.jpg" data-lightbox="mygallery" data-title="ტიტები. სერიიდან: ბავშვობის დათუნიები. მასალა:ტილო, აკრილი. ზომა: 50x40. ინსპირაცია. ავტორი: მარიამ ლობჟანიძე"><img src="images/image6.jpg"></a>
-          <a href="images/image8.jpg" data-lightbox="mygallery" data-title="ჟირაფი. მასალა: ფანქარი. ზომა:21x31. ავტორი: დავით შაინიძე 10 წლის"><img src="images/image8.jpg"></a>
-        </div> -->
       </div>
     </div>
     <!-- endd -->
@@ -219,8 +199,6 @@ while ($row = mysqli_fetch_all($res)) {
 
         var html = '<div class="col-xl-10"><div class="gallery "style="padding: 20px !important;">';
         html += '<div id="test1">';
-        console.log(data);
-        // console.log(data);
         if (!categoryArray.length) categoryArray = ["ზეთი", "გუაში", "აკრილი"];
         for (i = 0; i < data.length; i++) {
           var paintName = data[i][0];
@@ -230,15 +208,8 @@ while ($row = mysqli_fetch_all($res)) {
           var paintDate = data[i][4];
           var paintType = data[i][5];
           var paintAuthor = data[i][6];
-          console.log(paintCategory);
-          console.log("loop 1");
           for (category of categoryArray) {
-            console.log("loop 2");
             if (paintCategory == category) {
-              console.log("====");
-              console.log(category);
-              console.log("====");
-
               html += '<a  href="' + paintPath + '" data-lightbox="mygallery" data-title="' + paintName + " " + paintDescription + 'ავტორი :' + paintAuthor + '">';
               html += '<img src="' + paintPath + '"></a>';
             }
@@ -255,69 +226,6 @@ while ($row = mysqli_fetch_all($res)) {
       }
       generateGallery();
     </script>
-
-    <!-- 
-    <script>
-      function myFunction1() {
-
-        var checkBox1 = document.getElementById("myCheck1");
-        var checkBox2 = document.getElementById("myCheck2");
-        var checkBox3 = document.getElementById("myCheck3");
-
-        var dissappear1 = document.getElementById("test1");
-        var dissappear2 = document.getElementById("test2");
-        var dissappear3 = document.getElementById("test3");
-
-
-
-
-
-        if (checkBox1.checked == false && checkBox2.checked == true && checkBox3.checked == true) {
-
-          dissappear2.style.display = "block";
-          dissappear3.style.display = "block";
-        } else if (checkBox2.checked == false && checkBox1.checked == true && checkBox3.checked == true) {
-          dissappear1.style.display = "block";
-          dissappear3.style.display = "block";
-        } else if (checkBox3.checked == false && checkBox2.checked == true && checkBox1.checked == true) {
-          dissappear1.style.display = "block";
-          dissappear2.style.display = "block";
-        } else if (checkBox3.checked == false && checkBox2.checked == false && checkBox1.checked == false) {
-          dissappear1.style.display = "block";
-          dissappear3.style.display = "block";
-          dissappear2.style.display = "block";
-        } else if (checkBox1.checked == true && checkBox2.checked == true && checkBox3.checked == true) {
-          dissappear1.style.display = "block";
-          dissappear2.style.display = "block";
-          dissappear3.style.display = "block";
-
-        } else if (checkBox1.checked == true && checkBox2.checked == true) {
-
-          dissappear3.style.display = "none";
-
-        } else if (checkBox1.checked == true && checkBox3.checked == true) {
-
-          dissappear2.style.display = "none";
-
-        } else if (checkBox2.checked == true && checkBox3.checked == true) {
-
-          dissappear1.style.display = "none";
-
-        } else if (checkBox1.checked == true) {
-          dissappear2.style.display = "none";
-          dissappear3.style.display = "none";
-        } else if (checkBox2.checked == true) {
-          dissappear1.style.display = "none";
-          dissappear3.style.display = "none";
-        } else if (checkBox3.checked == true) {
-          dissappear1.style.display = "none";
-          dissappear2.style.display = "none";
-
-        }
-
-      }
-    </script> -->
-
 
     <!-- ---------------gallery----------- -->
 
