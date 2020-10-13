@@ -1,8 +1,17 @@
+<?php
+// არჩეული ენის შესაბამისად ფაილის ჩატვირთა
+$lang = "ge";
+if (isset($_GET['lang'])) {
+    $lang = $_GET['lang'];
+}
+require_once("language/" . $lang . ".php");
+?>
 <!DOCTYPE html>
 <html>
 
 <head>
     <title>Artblog</title>
+    <link rel="shortcut icon" href="icons/img2.png" />
     <link rel="stylesheet" href="css/test.css" />
 
     <!-- AOS -->
@@ -20,20 +29,6 @@
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
     <link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css" />
 
-    <!-- contact forms links -->
-    <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css" />
-    <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css" href="vendor/animate/animate.css" />
-    <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css" href="vendor/css-hamburgers/hamburgers.min.css" />
-    <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css" href="vendor/animsition/css/animsition.min.css" />
-    <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css" href="vendor/select2/select2.min.css" />
-    <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css" href="vendor/daterangepicker/daterangepicker.css" />
-    <!--===============================================================================================-->
     <link rel="stylesheet" type="text/css" href="css/util.css" />
     <link rel="stylesheet" type="text/css" href="css/main.css" />
     <!--===============================================================================================-->
@@ -42,7 +37,7 @@
 <body>
     <!-------------------------------------------------Navbar------------------------------------------>
     <nav class="navbar navbar-expand-lg navbar-light fixed-top">
-        <a class="navbar-brand text-white" href="#"><img class="mr-3" src="icons/img2.png" alt="logo" /> ARTBLOG</a>
+        <a class="navbar-brand text-white" href="index.php?lang=<?php echo $lang ?>"><img class="mr-3" src="icons/img2.png" alt="logo" /> ARTBLOG</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
             <img src="icons/icons8-xbox-menu-60.png" />
         </button>
@@ -50,36 +45,37 @@
             <ul class="navbar-nav mr-auto"></ul>
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link ml-4 text-white" href="#">Home</a>
+                    <a class="nav-link ml-4 text-white" href="index.php?lang=<?php echo $lang ?>"><?php echo $home ?></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link ml-4 text-white" href="#about">About</a>
+                    <a class="nav-link ml-4 text-white" href="index.php?lang=<?php echo $lang ?>#about"><?php echo $about ?></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link ml-4 text-white" href="#events">Events</a>
+                    <a class="nav-link ml-4 text-white" href="index.php?lang=<?php echo $lang ?>#events"><?php echo $event ?></a>
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle ml-4 text-white" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Category
+                        <?php echo $category ?>
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                        <a class="dropdown-item text-white ml-4" href="gallery.php">Painting</a>
-                        <a class="dropdown-item text-white ml-4" href="photography.php">Photography</a>
-                        <a class="dropdown-item text-white ml-4" href="directing.php">Directing</a>
-                        <a class="dropdown-item text-white ml-4" href="writing.php">Writing</a>
-                        <a class="dropdown-item text-white ml-4" href="actors.php">Actors</a>
+                        <a class="dropdown-item text-white ml-4" href="gallery.php?lang=<?php echo $lang ?>"><?php echo $paintings ?></a>
+                        <a class="dropdown-item text-white ml-4" href="photography.php?lang=<?php echo $lang ?>"><?php echo $photograpy ?></a>
+                        <a class="dropdown-item text-white ml-4" href="directing.php?lang=<?php echo $lang ?>"><?php echo $directing ?></a>
+                        <a class="dropdown-item text-white ml-4" href="writing.php?lang=<?php echo $lang ?>"><?php echo $writings ?></a>
+                        <a class="dropdown-item text-white ml-4" href="actors.php?lang=<?php echo $lang ?>"><?php echo $actors ?></a>
                     </div>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link ml-4 text-white" href="#contact">Contact</a>
+                    <a class="nav-link ml-4 text-white" href="index.php?lang=<?php echo $lang ?>#contact"><?php echo $contact ?></a>
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle ml-4 text-white" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <img src="icons/icons8-globe-20.png" />
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                        <a class="dropdown-item text-white ml-4" href="#"><img src="icons/georgia-flag-3d-round-icon-16.png" /> GE</a>
-                        <a class="dropdown-item text-white ml-4" href="#"><img src="icons/icons8-russian-federation-20.png" />RUS</a>
+                        <a class="dropdown-item text-white ml-4" href="?lang=ge"><img src="icons/georgia-flag-3d-round-icon-16.png" /> GE</a>
+                        <a class="dropdown-item text-white ml-4" href="?lang=en"><img src="icons/icons8-russian-federation-20.png" />EN</a>
+                        <!-- <a class="dropdown-item text-white ml-4" href="?lang=ru"><img src="icons/icons8-russian-federation-20.png" />RU</a> -->
                     </div>
                 </li>
             </ul>

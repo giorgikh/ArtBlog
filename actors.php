@@ -1,3 +1,18 @@
+<?php include 'globalVariable.php'; ?>
+<?php
+
+#connect
+$conn = mysqli_connect("localhost", $dbUser, $dbPassword, $DbName);
+$select_query = "SELECT `Actors_Name`, `Actors_Age`, `Actors_Height`, `Actor_Weight`, `Actor_Description`, actors_images.Image_Path  FROM `actors` 
+LEFT JOIN actors_images  on actors_images.Image_ID = `Actor_Image_ID`;";
+mysqli_query($conn, 'SET CHARACTER SET utf8');
+$res = mysqli_query($conn, $select_query);
+$data = array();
+while ($row = mysqli_fetch_all($res)) {
+  $data = $row;
+}
+?>
+
 <!DOCTYPE html>
 <html>
 
@@ -7,7 +22,7 @@
   <div style="height: 70px;"></div>
 
   <div class="row mb-4" style="margin-right: 14vh !important; margin-left: 14vh !important">
-    <svg width="250" height="100">
+    <svg width="<?php echo $svgActorsWidth ?>" height="100">
       <filter id="money">
         <feMorphology in="SourceGraphic" operator="dilate" radius="2" result="expand" />
 
@@ -76,7 +91,7 @@
       </filter>
 
       <text dominant-baseline="middle" text-anchor="middle" x="50%" y="50%">
-        Actors
+        <?php echo $actors ?>
       </text>
     </svg>
   </div>
@@ -84,439 +99,36 @@
   <!-- =---------------------------------------actors--------------------------------------------- -->
 
   <div class="actors mb-5">
-    <div class="row" style="width: 100% !important;">
-      <div class="col-xl-3 col-lg-6 col-sm-12">
-        <div class="our-team">
-          <div class="picture mb-4">
-            <img class="img-fluid" src="images/pexels-dayane-alves-4600358.jpg">
-          </div>
-          <div class="team-content">
-            <h3 class="name">12</h3>
-            <h4 class="title">Age: 21 <br> Height: 177 <br> Weight: 54</h4><br>
+    <div id="actors_div" class="row" style="width: 100% !important;">
+      <script>
+        var data = <?php echo json_encode($data, JSON_UNESCAPED_UNICODE); ?>;
+        html = "";
+        for (var i = 0; i < data.length; i++) {
+          var name = data[i][0];
+          var age = data[i][1];
+          var heigth = data[i][2];
+          var weight = data[i][3];
+          var imagePath = data[i][5];
+          var descritpion = data[i][4];
+          html += '<div class="col-xl-3 col-lg-6 col-sm-12"><div class="our-team mb-5">\
+          <div class="picture mb-4">\
+            <img class="img-fluid" src="' + imagePath + '"></div>\
+          <div class="team-content"><h3 class="name">';
 
+          html += name + '</h3><h4 class="title"> <?php echo $age ?>:' + age + " <br> <?php echo $height ?>: ";
+          html += heigth + " <br> <?php echo $Weight ?>: " + weight + " </h4><br>";
+          html += '<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalLong"><?php echo $viewMore ?></button>\
+            <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true" style="margin-left: 30% !important;">\
+            <div class="modal-dialog" role="document"><div class="modal-content"><div class="modal-header">\
+            <h5 class="modal-title" id="exampleModalLongTitle">12</h5><button type="button" class="close" data-dismiss="modal" aria-label="Close">\
+            <span aria-hidden="true">&times;</span></button></div><div class="modal-body">';
+          html += '<img class="img-fluid" src="' + imagePath + '">' + descritpion;
+          html += '</div></div></div></div></div></div></div>';
+        }
+        document.getElementById("actors_div").innerHTML = html;
 
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalLong">
-              VIEW MORE
-            </button>
-
-
-            <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true" style="margin-left: 30% !important;">
-              <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLongTitle">12</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                      <span aria-hidden="true">&times;</span>
-                    </button>
-                  </div>
-                  <div class="modal-body">
-                    Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-                  </div>
-                  <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-        </div>
-      </div>
-      <div class="col-xl-3 col-lg-6 col-sm-12">
-        <div class="our-team">
-          <div class="picture mb-4 ">
-            <img class="img-fluid" src="images/main_img2.jpg">
-          </div>
-          <div class="team-content">
-            <h3 class="name">0110</h3>
-            <h4 class="title">Age: 21 <br> Height: 177 <br> Weight: 54</h4><br>
-
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalLong">
-              VIEW MORE
-            </button>
-
-
-            <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true" style="margin-left: 30% !important;">
-              <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLongTitle">12</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                      <span aria-hidden="true">&times;</span>
-                    </button>
-                  </div>
-                  <div class="modal-body">
-                    Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-                  </div>
-                  <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="col-xl-3 col-lg-6 col-sm-12">
-        <div class="our-team">
-          <div class="picture mb-4">
-            <img class="img-fluid" src="images/main_img2.jpg">
-          </div>
-          <div class="team-content">
-            <h3 class="name">243</h3>
-            <h4 class="title">Age: 21 <br> Height: 177 <br> Weight: 54</h4><br>
-
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalLong">
-              VIEW MORE
-            </button>
-
-
-            <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true" style="margin-left: 30% !important;">
-              <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLongTitle">12</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                      <span aria-hidden="true">&times;</span>
-                    </button>
-                  </div>
-                  <div class="modal-body">
-                    Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-                  </div>
-                  <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="col-xl-3 col-lg-6 col-sm-12 mb-5">
-        <div class="our-team">
-          <div class="picture mb-4">
-            <img class="img-fluid" src="images/main_img2.jpg">
-          </div>
-          <div class="team-content">
-            <h3 class="name">Pythagoras</h3>
-            <h4 class="title">Age: 21 <br> Height: 177 <br> Weight: 54</h4><br>
-
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalLong">
-              VIEW MORE
-            </button>
-
-
-            <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true" style="margin-left: 30% !important;">
-              <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLongTitle">12</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                      <span aria-hidden="true">&times;</span>
-                    </button>
-                  </div>
-                  <div class="modal-body">
-                    Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-                  </div>
-                  <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-xl-3 col-lg-6 col-sm-12">
-        <div class="our-team">
-          <div class="picture mb-4">
-            <img class="img-fluid" src="images/main_img2.jpg">
-          </div>
-          <div class="team-content">
-            <h3 class="name">Pythagoras</h3>
-            <h4 class="title">Age: 21 <br> Height: 177 <br> Weight: 54</h4><br>
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalLong">
-              VIEW MORE
-            </button>
-
-
-            <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true" style="margin-left: 30% !important;">
-              <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLongTitle">12</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                      <span aria-hidden="true">&times;</span>
-                    </button>
-                  </div>
-                  <div class="modal-body">
-                    Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-                  </div>
-                  <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="col-xl-3 col-lg-6 col-sm-12">
-        <div class="our-team">
-          <div class="picture mb-4 ">
-            <img class="img-fluid" src="images/main_img2.jpg">
-          </div>
-          <div class="team-content">
-            <h3 class="name">Pythagoras</h3>
-            <h4 class="title">Age: 21 <br> Height: 177 <br> Weight: 54</h4><br>
-
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalLong">
-              VIEW MORE
-            </button>
-
-
-            <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true" style="margin-left: 30% !important;">
-              <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLongTitle">12</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                      <span aria-hidden="true">&times;</span>
-                    </button>
-                  </div>
-                  <div class="modal-body">
-                    Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-                  </div>
-                  <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="col-xl-3 col-lg-6 col-sm-12">
-        <div class="our-team">
-          <div class="picture mb-4">
-            <img class="img-fluid" src="images/main_img2.jpg">
-          </div>
-          <div class="team-content">
-            <h3 class="name">Pythagoras</h3>
-            <h4 class="title">Age: 21 <br> Height: 177 <br> Weight: 54</h4><br>
-
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalLong">
-              VIEW MORE
-            </button>
-
-            <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true" style="margin-left: 30% !important;">
-              <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLongTitle">12</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                      <span aria-hidden="true">&times;</span>
-                    </button>
-                  </div>
-                  <div class="modal-body">
-                    Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-                  </div>
-                  <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="col-xl-3 col-lg-6 col-sm-12 mb-5">
-        <div class="our-team">
-          <div class="picture mb-4">
-            <img class="img-fluid" src="images/main_img2.jpg">
-          </div>
-          <div class="team-content">
-            <h3 class="name">Pythagoras</h3>
-            <h4 class="title">Age: 21 <br> Height: 177 <br> Weight: 54</h4><br>
-
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalLong">
-              VIEW MORE
-            </button>
-
-
-            <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true" style="margin-left: 30% !important;">
-              <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLongTitle">12</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                      <span aria-hidden="true">&times;</span>
-                    </button>
-                  </div>
-                  <div class="modal-body">
-                    Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-                  </div>
-                  <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="col-xl-3 col-lg-6 col-sm-12">
-        <div class="our-team">
-          <div class="picture mb-4">
-            <img class="img-fluid" src="images/main_img2.jpg">
-          </div>
-          <div class="team-content">
-            <h3 class="name">Pythagoras</h3>
-            <h4 class="title">Age: 21 <br> Height: 177 <br> Weight: 54</h4><br>
-
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalLong">
-              VIEW MORE
-            </button>
-
-            <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true" style="margin-left: 30% !important;">
-              <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLongTitle">12</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                      <span aria-hidden="true">&times;</span>
-                    </button>
-                  </div>
-                  <div class="modal-body">
-                    Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-                  </div>
-                  <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="col-xl-3 col-lg-6 col-sm-12">
-        <div class="our-team">
-          <div class="picture mb-4 ">
-            <img class="img-fluid" src="images/main_img2.jpg">
-          </div>
-          <div class="team-content">
-            <h3 class="name">Pythagoras</h3>
-            <h4 class="title">Age: 21 <br> Height: 177 <br> Weight: 54</h4><br>
-
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalLong">
-              VIEW MORE
-            </button>
-
-
-            <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true" style="margin-left: 30% !important;">
-              <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLongTitle">12</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                      <span aria-hidden="true">&times;</span>
-                    </button>
-                  </div>
-                  <div class="modal-body">
-                    Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-                  </div>
-                  <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="col-xl-3 col-lg-6 col-sm-12">
-        <div class="our-team">
-          <div class="picture mb-4">
-            <img class="img-fluid" src="images/main_img2.jpg">
-          </div>
-          <div class="team-content">
-            <h3 class="name">Pythagoras</h3>
-            <h4 class="title">Age: 21 <br> Height: 177 <br> Weight: 54</h4><br>
-
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalLong">
-              VIEW MORE
-            </button>
-
-
-            <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true" style="margin-left: 30% !important;">
-              <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLongTitle">12</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                      <span aria-hidden="true">&times;</span>
-                    </button>
-                  </div>
-                  <div class="modal-body">
-                    Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-                  </div>
-                  <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="col-xl-3 col-lg-6 col-sm-12">
-        <div class="our-team">
-          <div class="picture mb-4">
-            <img class="img-fluid" src="images/main_img2.jpg">
-          </div>
-          <div class="team-content">
-            <h3 class="name">Pythagoras</h3>
-            <h4 class="title">Age: 21 <br> Height: 177 <br> Weight: 54</h4><br>
-
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalLong">
-              VIEW MORE
-            </button>
-
-
-            <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true" style="margin-left: 30% !important;">
-              <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLongTitle">12</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                      <span aria-hidden="true">&times;</span>
-                    </button>
-                  </div>
-                  <div class="modal-body">
-                    Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-                  </div>
-                  <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+        console.log(html);
+      </script>
     </div>
   </div>
 
