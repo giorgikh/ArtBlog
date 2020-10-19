@@ -102,15 +102,15 @@ while ($row = mysqli_fetch_all($res)) {
       <label for="myCheck3"> <?php echo $acrylic ?>:</label>
       <input type="checkbox" id="myCheck3" onclick="generateGallery()"><br>
       <label for="myCheck2"> <?php echo $coal ?>:</label>
-      <input type="checkbox" id="myCheck2" onclick="generateGallery()"><br>
+      <input type="checkbox" id="myCheck4" onclick="generateGallery()"><br>
       <label for="myCheck2"> <?php echo $acuarel ?>:</label>
-      <input type="checkbox" id="myCheck2" onclick="generateGallery()"><br>
+      <input type="checkbox" id="myCheck5" onclick="generateGallery()"><br>
       <label for="myCheck2"> <?php echo $graphic ?>:</label>
-      <input type="checkbox" id="myCheck2" onclick="generateGallery()"><br>
+      <input type="checkbox" id="myCheck6" onclick="generateGallery()"><br>
       <label for="myCheck2"> <?php echo $mixed ?>:</label>
-      <input type="checkbox" id="myCheck2" onclick="generateGallery()"><br>
+      <input type="checkbox" id="myCheck7" onclick="generateGallery()"><br>
       <label for="myCheck2"> <?php echo $other ?>:</label>
-      <input type="checkbox" id="myCheck2" onclick="generateGallery()"><br>
+      <input type="checkbox" id="myCheck8" onclick="generateGallery()"><br>
     </div>
     <!--  start -->
     <div class="col-xl-10">
@@ -121,6 +121,11 @@ while ($row = mysqli_fetch_all($res)) {
       var oil = document.getElementById("myCheck1");
       var gouache = document.getElementById("myCheck2");
       var acrylic = document.getElementById("myCheck3");
+      var coal = document.getElementById("myCheck4");
+      var acuarel = document.getElementById("myCheck5");
+      var graphic = document.getElementById("myCheck6");
+      var mixed = document.getElementById("myCheck7");
+      var other = document.getElementById("myCheck8");
 
       function generateGallery() {
         var categoryNumber = 3;
@@ -129,9 +134,14 @@ while ($row = mysqli_fetch_all($res)) {
         if (oil.checked) categoryArray.push("ზეთი");
         if (gouache.checked) categoryArray.push("გუაში");
         if (acrylic.checked) categoryArray.push("აკრილი");
+        if (coal.checked) categoryArray.push("ნახშირი");
+        if (acuarel.checked) categoryArray.push("აკვარელი");
+        if (graphic.checked) categoryArray.push("გრაფიკული");
+        if (mixed.checked) categoryArray.push("შერეული");
+        if (other.checked) categoryArray.push("სხვა");
 
         var html = '<div class="gallery "style="padding: 20px !important;">';
-        if (!categoryArray.length) categoryArray = ["ზეთი", "გუაში", "აკრილი"];
+        if (!categoryArray.length) categoryArray = ["ზეთი", "გუაში", "აკრილი", "ნახშირი", "აკვარელი", "გრაფიკული", "შერეული", "სხვა"];
         for (i = 0; i < data.length; i++) {
           var paintName = data[i][0];
           var paintDescription = data[i][1];
