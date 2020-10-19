@@ -74,7 +74,7 @@ require_once("language/" . $lang . ".php");
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                         <a class="dropdown-item text-white ml-4" href="?lang=ge"><img src="icons/georgia-flag-3d-round-icon-16.png" /> GE</a>
-                        <a class="dropdown-item text-white ml-4" href="?lang=en"><img src="icons/icons8-russian-federation-20.png" />EN</a>
+                        <a class="dropdown-item text-white ml-4" href="?lang=en"><img src="icons/icons8-usa-20.png" />EN</a>
                         <!-- <a class="dropdown-item text-white ml-4" href="?lang=ru"><img src="icons/icons8-russian-federation-20.png" />RU</a> -->
                     </div>
                 </li>
