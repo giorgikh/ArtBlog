@@ -27,7 +27,7 @@ while ($row = mysqli_fetch_all($res)) {
 
   <!-- ------------------------------------gallery------------------------ -->
   <div class="row mb-2" style="margin-right: 14vh !important; margin-left: 14vh !important">
-    <svg width="220" height="100">
+    <svg width="350" height="100">
       <filter id="money">
         <feMorphology in="SourceGraphic" operator="dilate" radius="2" result="expand" />
         <feOffset in="expand" dx="1" dy="1" result="shadow_1" />
@@ -89,12 +89,25 @@ while ($row = mysqli_fetch_all($res)) {
       <text dominant-baseline="middle" text-anchor="middle" x="50%" y="50%">
         <?php echo $photography ?>
       </text>
+
     </svg>
   </div>
   <div class="row  mb-5 main_gallery">
     <div class="col-xl-2" style=" padding: 20px !important;">
       <h2> <?php echo $category ?></h2>
       <div style="width: 150px; height: 2px; background-color: #234140;"></div><br>
+      <label for="myCheck1"> <?php echo $blackwhite ?>:</label>
+      <input type="checkbox" id="myCheck1" onclick="generateGallery()"><br>
+      <label for="myCheck1"> <?php echo $colored ?>:</label>
+      <input type="checkbox" id="myCheck1" onclick="generateGallery()"><br>
+      <label for="myCheck1"> <?php echo $portrait ?>:</label>
+      <input type="checkbox" id="myCheck1" onclick="generateGallery()"><br>
+      <label for="myCheck1"> <?php echo $landscape ?>:</label>
+      <input type="checkbox" id="myCheck1" onclick="generateGallery()"><br>
+      <label for="myCheck1"> <?php echo $abstract ?>:</label>
+      <input type="checkbox" id="myCheck1" onclick="generateGallery()"><br>
+      <label for="myCheck1"> <?php echo $other ?>:</label>
+      <input type="checkbox" id="myCheck1" onclick="generateGallery()"><br>
     </div>
     <!--  start -->
     <div class="col-xl-10">

@@ -3,8 +3,8 @@
 <?php
 #connect
 $conn = mysqli_connect("localhost", $dbUser, $dbPassword, $DbName);
-$select_query = "SELECT `Paint_Name`, `Paint_Description`, `Pain_Path`, category.Category_Name , `Paint_Date`, `Paint_Type`, `Paint_Author` FROM `paintings`
-left JOIN category on category.Category_ID = paintings.Paint_Category_ID";
+$select_query = "SELECT `Paint_Name`, `Paint_Description`, `Pain_Path`, paintings_category.Category_Name , `Paint_Date`, `Paint_Type`, `Paint_Author` FROM `paintings`
+left JOIN paintings_category on paintings_category.Category_ID = paintings.Paint_Category_ID";
 mysqli_query($conn, 'SET CHARACTER SET utf8');
 $res = mysqli_query($conn, $select_query);
 $data = array();
@@ -100,11 +100,21 @@ while ($row = mysqli_fetch_all($res)) {
       <label for="myCheck2"> <?php echo $guache ?>:</label>
       <input type="checkbox" id="myCheck2" onclick="generateGallery()"><br>
       <label for="myCheck3"> <?php echo $acrylic ?>:</label>
-      <input type="checkbox" id="myCheck3" onclick="generateGallery()">
+      <input type="checkbox" id="myCheck3" onclick="generateGallery()"><br>
+      <label for="myCheck2"> <?php echo $coal ?>:</label>
+      <input type="checkbox" id="myCheck2" onclick="generateGallery()"><br>
+      <label for="myCheck2"> <?php echo $acuarel ?>:</label>
+      <input type="checkbox" id="myCheck2" onclick="generateGallery()"><br>
+      <label for="myCheck2"> <?php echo $graphic ?>:</label>
+      <input type="checkbox" id="myCheck2" onclick="generateGallery()"><br>
+      <label for="myCheck2"> <?php echo $mixed ?>:</label>
+      <input type="checkbox" id="myCheck2" onclick="generateGallery()"><br>
+      <label for="myCheck2"> <?php echo $other ?>:</label>
+      <input type="checkbox" id="myCheck2" onclick="generateGallery()"><br>
     </div>
     <!--  start -->
     <div class="col-xl-10">
-      <div id="test"></div>
+      <div id="GalleryDiv"></div>
     </div>
     <!-- endd -->
     <script>
@@ -121,7 +131,6 @@ while ($row = mysqli_fetch_all($res)) {
         if (acrylic.checked) categoryArray.push("აკრილი");
 
         var html = '<div class="gallery "style="padding: 20px !important;">';
-        html += '<div id="test1">';
         if (!categoryArray.length) categoryArray = ["ზეთი", "გუაში", "აკრილი"];
         for (i = 0; i < data.length; i++) {
           var paintName = data[i][0];
@@ -138,8 +147,8 @@ while ($row = mysqli_fetch_all($res)) {
             }
           }
         }
-        html += '</div></div></div>';
-        document.getElementById("test").innerHTML = html;
+        html += '</div></div>';
+        document.getElementById("GalleryDiv").innerHTML = html;
       }
       generateGallery();
     </script>
