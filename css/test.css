@@ -226,7 +226,7 @@ textarea.input {
   transition: 1s;
   margin: 5px !important;
   width: 200px;
-  height: 200px;
+  height: 250px;
 }
 h2, label, input {
   color: #234140;
