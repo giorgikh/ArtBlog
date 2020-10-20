@@ -5,7 +5,7 @@
 $conn = mysqli_connect("localhost", $dbUser, $dbPassword, $DbName);
 $select_query = "SELECT `photography_title`, `photography_image_path`, photography_author.author_name, photography_category.category_name FROM `photography` 
 LEFT JOIN  photography_author on photography_author.author_ID = photography.photography_author_id
-left JOIN photography_category on photography_category.category_ID = photography.photocraphy_category_id";
+left JOIN photography_category on photography_category.category_ID = photography.photography_category_id";
 mysqli_query($conn, 'SET CHARACTER SET utf8');
 $res = mysqli_query($conn, $select_query);
 $data = array();
