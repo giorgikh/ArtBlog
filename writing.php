@@ -89,46 +89,76 @@ while ($row = mysqli_fetch_all($res)) {
       <div class="w_text m-5">
         <h2><?php echo $category ?></h2>
         <div style="width: 150px; height: 2px; background-color: #234140;"></div><br>
-        <input type="checkbox" id="myCheck1" onclick="myFunction1()">
+        <input type="checkbox" id="myCheck1" onclick="GenerateWriting()">
         <label for="myCheck1"><?php echo $poem ?></label><br>
-        <input type="checkbox" id="myCheck1" onclick="myFunction1()">
+        <input type="checkbox" id="myCheck2" onclick="GenerateWriting()">
         <label for="myCheck2"><?php echo $story ?></label><br>
-        <input type="checkbox" id="myCheck2" onclick="myFunction1()">
-        <label for="myCheck2"><?php echo $verse ?></label><br>
-        <input type="checkbox" id="myCheck2" onclick="myFunction1()">
-        <label for="myCheck2"><?php echo $novel ?></label><br>
-        <input type="checkbox" id="myCheck2" onclick="myFunction1()">
-        <label for="myCheck2"><?php echo $minima ?></label><br>
-        <input type="checkbox" id="myCheck2" onclick="myFunction1()">
-        <label for="myCheck2"><?php echo $series ?></label><br>
-        <input type="checkbox" id="myCheck2" onclick="myFunction1()">
-        <label for="myCheck2"><?php echo $sketch ?></label><br>
-        <input type="checkbox" id="myCheck2" onclick="myFunction1()">
-        <label for="myCheck2"><?php echo $freeverse ?></label><br>
-        <input type="checkbox" id="myCheck2" onclick="myFunction1()">
-        <label for="myCheck2"><?php echo $other ?></label><br>
+        <input type="checkbox" id="myCheck3" onclick="GenerateWriting()">
+        <label for="myCheck3"><?php echo $verse ?></label><br>
+        <input type="checkbox" id="myCheck4" onclick="GenerateWriting()">
+        <label for="myCheck4"><?php echo $novel ?></label><br>
+        <input type="checkbox" id="myCheck5" onclick="GenerateWriting()">
+        <label for="myCheck5"><?php echo $minima ?></label><br>
+        <input type="checkbox" id="myCheck6" onclick="GenerateWriting()">
+        <label for="myCheck6"><?php echo $series ?></label><br>
+        <input type="checkbox" id="myCheck7" onclick="GenerateWriting()">
+        <label for="myCheck7"><?php echo $sketch ?></label><br>
+        <input type="checkbox" id="myCheck8" onclick="GenerateWriting()">
+        <label for="myCheck8"><?php echo $freeverse ?></label><br>
+        <input type="checkbox" id="myCheck9" onclick="GenerateWriting()">
+        <label for="myCheck9"><?php echo $other ?></label><br>
       </div>
     </div>
 
     <div id="writingDiv" class="col-xl-9"></div>
     <script>
-      var data = <?php echo json_encode($data, JSON_UNESCAPED_UNICODE); ?>;
-      html = "";
-      for (var i = 0; i < data.length; i++) {
-        var writingTitle = data[i][0];
-        var writingText = data[i][1];
-        var writingCategory = data[i][2];
-        var writerFirstName = data[i][3];
-        var writerLastName = data[i][4];
-        html += '<div class="autors text-center  m-5">\
-          <button type="button" class="big-button writing_button mb-5" data-toggle="modal" data-target="#exampleModal1">' + writerFirstName + " " + writerLastName + " " + writingTitle + '</button>';
-        html += '<div class="modal fade" id="exampleModal1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true"  style="margin-left: 30% !important;\
+      function GenerateWriting() {
+        var poem = document.getElementById("myCheck1");
+        var story = document.getElementById("myCheck2");
+        var verse = document.getElementById("myCheck3");
+        var novel = document.getElementById("myCheck4");
+        var minima = document.getElementById("myCheck5");
+        var series = document.getElementById("myCheck6");
+        var sketch = document.getElementById("myCheck7");
+        var freeverse = document.getElementById("myCheck8");
+        var other = document.getElementById("myCheck9");
+        var categoryArray = [];
+        html = "";
+        var data = <?php echo json_encode($data, JSON_UNESCAPED_UNICODE); ?>;
+
+        if (poem.checked) categoryArray.push("პოემა");
+        if (story.checked) categoryArray.push("მოთხრობა");
+        if (verse.checked) categoryArray.push("ლექსი");
+        if (novel.checked) categoryArray.push("ნოველა");
+        if (minima.checked) categoryArray.push("მინიმა");
+        if (series.checked) categoryArray.push("სერია");
+        if (sketch.checked) categoryArray.push("ჩანახატი");
+        if (freeverse.checked) categoryArray.push("ვერლიბრი");
+        if (other.checked) categoryArray.push("სხვა");
+
+        if (!categoryArray.length) categoryArray = ["პოემა", "მოთხრობა", "ლექსი", "ნოველა", "მინიმა", "სერია", "ჩანახატი", "ვერლიბრი", "სხვა"];
+        for (var i = 0; i < data.length; i++) {
+          var writingTitle = data[i][0];
+          var writingText = data[i][1];
+          var writingCategory = data[i][2];
+          var writerFirstName = data[i][3];
+          var writerLastName = data[i][4];
+          for (category of categoryArray) {
+            if (writingCategory == category) {
+              html += '<div class="autors text-center  m-5">\
+              <button type="button" class="big-button writing_button mb-5" data-toggle="modal" data-target="#exampleModal1">' + writerFirstName + " " + writerLastName + " " + writingTitle + '</button>';
+              html += '<div class="modal fade" id="exampleModal1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true"  style="margin-left: 30% !important;\
                   margin-top: 10% !important"><div class="modal-dialog" role="document"> <div class="modal-content"><div class="modal-header"> <h5 class="modal-title" id="exampleModalLabel">.\
                   </h5><button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span aria-hidden="true">&times;</span></button></div><div class="modal-body"><p style="font-size: 20px;">\
                   <b>' + writingTitle + '</b></p>' + writingText + '<br><b>';
-        html += '<b>' + writerFirstName + " " + writerLastName + '</b></div></div></div></div><br></div>';
+              html += '<b>' + writerFirstName + " " + writerLastName + '</b></div></div></div></div><br></div>';
+            }
+          }
+
+        }
+        document.getElementById("writingDiv").innerHTML = html;
       }
-      document.getElementById("writingDiv").innerHTML = html;
+      GenerateWriting();
     </script>
 
 

@@ -101,15 +101,15 @@ while ($row = mysqli_fetch_all($res)) {
       <input type="checkbox" id="myCheck2" onclick="generateGallery()"><br>
       <label for="myCheck3"> <?php echo $acrylic ?>:</label>
       <input type="checkbox" id="myCheck3" onclick="generateGallery()"><br>
-      <label for="myCheck2"> <?php echo $coal ?>:</label>
+      <label for="myCheck4"> <?php echo $coal ?>:</label>
       <input type="checkbox" id="myCheck4" onclick="generateGallery()"><br>
-      <label for="myCheck2"> <?php echo $acuarel ?>:</label>
+      <label for="myCheck5"> <?php echo $acuarel ?>:</label>
       <input type="checkbox" id="myCheck5" onclick="generateGallery()"><br>
-      <label for="myCheck2"> <?php echo $graphic ?>:</label>
+      <label for="myCheck6"> <?php echo $graphic ?>:</label>
       <input type="checkbox" id="myCheck6" onclick="generateGallery()"><br>
-      <label for="myCheck2"> <?php echo $mixed ?>:</label>
+      <label for="myCheck7"> <?php echo $mixed ?>:</label>
       <input type="checkbox" id="myCheck7" onclick="generateGallery()"><br>
-      <label for="myCheck2"> <?php echo $other ?>:</label>
+      <label for="myCheck8"> <?php echo $other ?>:</label>
       <input type="checkbox" id="myCheck8" onclick="generateGallery()"><br>
     </div>
     <!--  start -->
@@ -118,17 +118,16 @@ while ($row = mysqli_fetch_all($res)) {
     </div>
     <!-- endd -->
     <script>
-      var oil = document.getElementById("myCheck1");
-      var gouache = document.getElementById("myCheck2");
-      var acrylic = document.getElementById("myCheck3");
-      var coal = document.getElementById("myCheck4");
-      var acuarel = document.getElementById("myCheck5");
-      var graphic = document.getElementById("myCheck6");
-      var mixed = document.getElementById("myCheck7");
-      var other = document.getElementById("myCheck8");
-
       function generateGallery() {
-        var categoryNumber = 3;
+        var oil = document.getElementById("myCheck1");
+        var gouache = document.getElementById("myCheck2");
+        var acrylic = document.getElementById("myCheck3");
+        var coal = document.getElementById("myCheck4");
+        var acuarel = document.getElementById("myCheck5");
+        var graphic = document.getElementById("myCheck6");
+        var mixed = document.getElementById("myCheck7");
+        var other = document.getElementById("myCheck8");
+
         var categoryArray = [];
         var data = <?php echo json_encode($data, JSON_UNESCAPED_UNICODE); ?>;
         if (oil.checked) categoryArray.push("ზეთი");
