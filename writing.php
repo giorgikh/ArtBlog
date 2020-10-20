@@ -150,9 +150,9 @@ while ($row = mysqli_fetch_all($res)) {
               <button type="button" class="big-button writing_button mb-5" data-toggle="modal" data-target="#exampleModal' + modalId + '">' + writerFirstName + " " + writerLastName + " " + writingTitle + '</button>';
               html += '<div class="modal fade" id="exampleModal' + modalId + '" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true"  style="margin-left: 30% !important;\
                   margin-top: 10% !important"><div class="modal-dialog" role="document"> <div class="modal-content"><div class="modal-header"> <h5 class="modal-title" id="exampleModalLabel">.\
-                  </h5><button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span aria-hidden="true">&times;</span></button></div><div class="modal-body"><p style="font-size: 20px;">\
-                  <b>' + writingTitle + '</b></p>' + writingText + '<br><b>';
-              html += '<b>' + writerFirstName + " " + writerLastName + '</b></div></div></div></div><br></div>';
+                  </h5><button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span aria-hidden="true">&times;</span></button></div><div class="modal-body"><p style="font-size: 20px;">'
+                   + writingTitle + '</p>' + writingText + '<br>';
+              html +=  writerFirstName + " " + writerLastName + '</b></div></div></div></div><br></div>';
             }
           }
           modalId += 1;
