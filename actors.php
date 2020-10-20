@@ -102,6 +102,7 @@ while ($row = mysqli_fetch_all($res)) {
     <div id="actors_div" class="row" style="width: 100% !important;">
       <script>
         var data = <?php echo json_encode($data, JSON_UNESCAPED_UNICODE); ?>;
+        var modalId = 1;
         html = "";
         for (var i = 0; i < data.length; i++) {
           var name = data[i][0];
@@ -117,13 +118,14 @@ while ($row = mysqli_fetch_all($res)) {
 
           html += name + '</h3><h4 class="title"> <?php echo $age ?>:' + age + " <br> <?php echo $height ?>: ";
           html += heigth + " <br> <?php echo $Weight ?>: " + weight + " </h4><br>";
-          html += '<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalLong"><?php echo $viewMore ?></button>\
-            <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true" style="margin-left: 30% !important;">\
+          html += '<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalLong' + modalId + '"><?php echo $viewMore ?></button>\
+            <div class="modal fade" id="exampleModalLong' + modalId + '" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true" style="margin-left: 30% !important;">\
             <div class="modal-dialog" role="document"><div class="modal-content"><div class="modal-header">\
             <h5 class="modal-title" id="exampleModalLongTitle">12</h5><button type="button" class="close" data-dismiss="modal" aria-label="Close">\
             <span aria-hidden="true">&times;</span></button></div><div class="modal-body">';
           html += '<img class="img-fluid" src="' + imagePath + '">' + descritpion;
           html += '</div></div></div></div></div></div></div>';
+          modalId += 1;
         }
         document.getElementById("actors_div").innerHTML = html;
 

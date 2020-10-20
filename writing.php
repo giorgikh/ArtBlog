@@ -123,6 +123,7 @@ while ($row = mysqli_fetch_all($res)) {
         var freeverse = document.getElementById("myCheck8");
         var other = document.getElementById("myCheck9");
         var categoryArray = [];
+        var modalId = 1;
         html = "";
         var data = <?php echo json_encode($data, JSON_UNESCAPED_UNICODE); ?>;
 
@@ -146,14 +147,15 @@ while ($row = mysqli_fetch_all($res)) {
           for (category of categoryArray) {
             if (writingCategory == category) {
               html += '<div class="autors text-center  m-5">\
-              <button type="button" class="big-button writing_button mb-5" data-toggle="modal" data-target="#exampleModal1">' + writerFirstName + " " + writerLastName + " " + writingTitle + '</button>';
-              html += '<div class="modal fade" id="exampleModal1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true"  style="margin-left: 30% !important;\
+              <button type="button" class="big-button writing_button mb-5" data-toggle="modal" data-target="#exampleModal' + modalId + '">' + writerFirstName + " " + writerLastName + " " + writingTitle + '</button>';
+              html += '<div class="modal fade" id="exampleModal' + modalId + '" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true"  style="margin-left: 30% !important;\
                   margin-top: 10% !important"><div class="modal-dialog" role="document"> <div class="modal-content"><div class="modal-header"> <h5 class="modal-title" id="exampleModalLabel">.\
                   </h5><button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span aria-hidden="true">&times;</span></button></div><div class="modal-body"><p style="font-size: 20px;">\
                   <b>' + writingTitle + '</b></p>' + writingText + '<br><b>';
               html += '<b>' + writerFirstName + " " + writerLastName + '</b></div></div></div></div><br></div>';
             }
           }
+          modalId += 1;
 
         }
         document.getElementById("writingDiv").innerHTML = html;
