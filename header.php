@@ -6,6 +6,7 @@ if (isset($_GET['lang'])) {
 }
 require_once("language/" . $lang . ".php");
 ?>
+
 <!DOCTYPE html>
 <html>
 
@@ -35,8 +36,9 @@ require_once("language/" . $lang . ".php");
 </head>
 
 <body>
+
     <!-------------------------------------------------Navbar------------------------------------------>
-    <nav class="navbar navbar-expand-lg navbar-light fixed-top">
+     <nav class="navbar navbar-expand-lg  fixed-top navbar-fixed-top">
         <a class="navbar-brand text-white" href="index.php?lang=<?php echo $lang ?>"><img class="mr-3" src="icons/img2.png" alt="logo" /> ARTBLOG</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
             <img src="icons/icons8-xbox-menu-60.png" />
@@ -82,6 +84,8 @@ require_once("language/" . $lang . ".php");
         </div>
     </nav>
     <!-- --------------------------------------------/Navbar--------------------------------- -->
-</body>
 
+
+
+</body>
 </html>

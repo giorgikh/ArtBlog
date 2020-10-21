@@ -6,6 +6,10 @@
 html {
   scroll-behavior: smooth;
 }
+.navbar-fixed-top.scrolled {
+  background-color: #aa411f !important;
+  transition: 1s;
+}
 .navbar-nav, .navbar-toggler {
   margin-right: 14vh !important;
 }
@@ -13,12 +17,9 @@ html {
   margin-left: 14vh !important;
 }
 nav {
-  background-color: #aa411f;
   opacity: 0.9;
-  height: 60px;
 }
 .navbar-collapse {
-  background-color: #aa411f;
   opacity: 0.9;
 }
 .navbar-nav {
@@ -34,7 +35,15 @@ nav {
   color: #37332b !important;
   background-color: #aa411f !important;
 }
-.parallax {
+.centri{
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important; 
+  width: 100%;
+  height: 800px;
+}
+
+.parallax1  {
   background-image: url("../images/main_img3.jpg");
   min-height: 800px;
   background-attachment: fixed;
@@ -42,13 +51,19 @@ nav {
   background-repeat: no-repeat;
   background-size: cover;
 }
-
+.parallax2{
+  background-image: url("../images/main_img3.jpg");
+  min-height: 800px !important;
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
 @media only screen and (min-width: 2000px) {
   .parallax {
     min-height: 2000px;
   }
 }
-
 text {
   fill: #37332b;
   filter: url("#money");
@@ -61,6 +76,42 @@ text {
   margin-left: 14vh !important;
   margin-right: 14vh !important;
 }
+
+/*  -----------------card-flip-----------------------*/
+
+.flip-card {
+  width: 300px;
+  height: 300px;
+}
+
+.flip-card-inner {
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.6s;
+  transform-style: preserve-3d;
+  /*box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);*/
+}
+
+.flip-card:hover .flip-card-inner {
+  transform: rotateY(180deg);
+}
+
+.flip-card-front, .flip-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+
+.flip-card-back {
+  background-color: #f7f5ec;
+  color: white;
+  transform: rotateY(180deg);
+}
+/*--------------------------------------------/card-flip ----------------*/
+
 .cardbody {
   border: none !important;
   overflow: hidden;
@@ -193,8 +244,8 @@ textarea.input {
 }
 .Bg {
   background-color: #f7f5ec !important;
-  border-radius: 50px !important;
 }
+
 @media only screen and (max-width: 992px) {
   .contact_information, .wrap-contact100 {
     text-align:center;
@@ -312,8 +363,6 @@ h2, label, input {
 .team-content button:hover {
   background-color: #aa411f;
 }
-
-
 /*autors */
 
 .writing {
@@ -332,8 +381,6 @@ h2, label, input {
   --colorShadeD: rgb(187, 232, 211);
   --colorShadeE: rgb(205, 255, 232);
 }
-
-
 .writing_button {
   display: inline-block;
   cursor: pointer;
@@ -373,12 +420,10 @@ h2, label, input {
 .writing_button.big-button:hover {
   background: var(--colorShadeD);
   transform: translate(0, 0.375em);
-
 }
 
 .writing_button.big-button:hover::before {
   transform: translate3d(0, 0.75em, -1em);
-
 }
 
 .writing_button.big-button:active {
@@ -388,8 +433,6 @@ h2, label, input {
 .writing_button.big-button:active::before {
   transform: translate3d(0, 0, -1em);
   box-shadow: 0 0 0 2px var(--colorShadeB), 0 0.25em 0 0 var(--colorShadeB);
-  
-
 }
 
 

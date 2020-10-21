@@ -4,7 +4,12 @@
 
 <body>
   <!----------------------------------------------Main img--------------------------------- -->
-  <div class="parallax"></div>
+  <div class="parallax parallax1 text-white text-center">
+    <div class="centri">
+    <h1>ხელოვნება თავად უკვდავებაა..</h1>
+    
+    </div>
+  </div>
   <!-- --------------------------------------------/Main img--------------------------------- -->
 
   <!------------------------------------------------About--------------------------------------->
@@ -152,43 +157,59 @@
       </svg>
     </div>
   </div>
+
+
+
   <div class="row" style="margin-left: 14vh !important; margin-right: 14vh !important">
-    <div class="col-xl-4 col-lg-12 col-sm-12">
-      <div class="card m-3">
-        <img class="card-img-top" src="images/pexels-tim-gouw-139764.jpg" alt="Card image cap" />
-        <div class="card-body">
-          <p class="card-text text-center m-2">
+
+      <div class="col-lg-4 " >
+<div class="flip-card" style="margin:auto !important;">
+  <div class="flip-card-inner">
+    <div class="flip-card-front">
+      <img src="images/events/event_image1.jpg" alt="Avatar" style="width:300px;height:300px;">
+    </div>
+    <div class="flip-card-back">
+      <p class="card-text  m-2" style="margin-left: auto !important; margin-right: auto !important;">
             <?php echo $date ?>: 20/10/2020 <br />
             <?php echo $time ?>: 14:00 <br />
             <?php echo $location ?>: kolonadebtan
-          </p>
-        </div>
-      </div>
+      </p>
     </div>
-    <div class="col-xl-4 col-lg-12 col-sm-12">
-      <div class="card m-3">
-        <img class="card-img-top" src="images/pexels-tim-gouw-139764.jpg" alt="Card image cap" />
-        <div class="card-body">
-          <p class="card-text text-center m-2">
+  </div>
+</div>
+</div>
+<div class="col-lg-4" >
+<div class="flip-card" style="margin:auto !important;">
+  <div class="flip-card-inner">
+    <div class="flip-card-front">
+      <img src="images/events/event_image1.jpg" alt="Avatar" style="width:300px;height:300px;">
+    </div>
+    <div class="flip-card-back">
+      <p class="card-text text-center m-2">
             <?php echo $date ?>: 20/10/2020 <br />
             <?php echo $time ?>: 14:00 <br />
             <?php echo $location ?>: kolonadebtan
-          </p>
-        </div>
-      </div>
+      </p>
     </div>
-    <div class="col-xl-4 col-lg-12 col-sm-12">
-      <div class="card m-3">
-        <img class="card-img-top" src="images/pexels-tim-gouw-139764.jpg" alt="Card image cap" />
-        <div class="card-body">
-          <p class="card-text text-center m-2">
+  </div>
+</div>
+</div>
+<div class="col-lg-4" >
+<div class="flip-card" style="margin:auto !important;">
+  <div class="flip-card-inner">
+    <div class="flip-card-front">
+      <img src="images/events/event_image1.jpg" alt="Avatar" style="width:300px;height:300px;">
+    </div>
+    <div class="flip-card-back">
+      <p class="card-text text-center m-2">
             <?php echo $date ?>: 20/10/2020 <br />
             <?php echo $time ?>: 14:00 <br />
             <?php echo $location ?>: kolonadebtan
-          </p>
-        </div>
-      </div>
+      </p>
     </div>
+  </div>
+</div>
+</div>
   </div>
   <!--------------------------------------/Events--------------------------------------------->
 
@@ -372,34 +393,37 @@
       </svg>
     </div>
   </div>
-  <div class="row m-5 Bg" style="margin-left: 14vh !important; margin-right: 14vh !important">
-    <div class="col-xl-4 col-lg-4 col-sm-12 mb-4" style="height: 600px">
-      <div class="contact_information m-5" style="margin-top: 100px !important">
-        <h2> <?php echo $getInTouch ?></h2><br />
+
+<div class="parallax parallax2">
+  
+  <div class="row " style=" margin-left: 14vh !important; margin-right: 14vh !important">
+    <div class="col-xl-4 col-lg-4 col-sm-12 mb-4 Bg" style="height: 600px;  margin-top: 100px !important;">
+      <div class="contact_information m-5" >
+        <h2> <?php echo $getInTouch ?>:</h2><br><br>
         <p>
-          <img src="icons/icons8-user-location-48.png" /> <?php echo $location ?>:<br />
+          <img src="icons/icons8-user-location-30.png" /> <?php echo $location ?>:<br>
           <?php echo $addres ?>
         </p>
         <p>
-          <img src="icons/icons8-important-mail-48.png" /> <?php echo $email ?>:<br />nino_shainidze@gmail.com
+          <img src="icons/icons8-mail-30.png" /> <?php echo $email ?>:<br/>nino_shainidze@gmail.com
         </p>
         <p>
-          <img src="icons/icons8-outgoing-call-48.png" /> <?php echo $phoneNumber ?>:<br />
+          <img src="icons/icons8-cell-phone-30.png" /> <?php echo $phoneNumber ?>:<br>
           +995 55 55 55
-        </p><br />
+        </p><br><br>
         <h4>
-          <?php echo $contactSocialMedia ?>: <br>
-          <a href="#"><img src="icons/icons8-facebook-48.png" /></a>
-          <a href="#"><img src="icons/icons8-instagram-48.png" /></a>
-          <a href="#"><img src="icons/icons8-pinterest-48.png" /></a>
+          <?php echo $contactSocialMedia ?>:<br>
+          <a href="https://www.facebook.com/nini.shainidze.90/" target="_blank"><img src="icons/icons8-facebook-30.png" /></a>
+          <a href="https://www.facebook.com/nini.shainidze.90/" target="_blank"><img src="icons/icons8-instagram-30.png" /></a>
+          <a href="https://www.facebook.com/nini.shainidze.90/" target="_blank"><img src="icons/icons8-pinterest-30.png" /></a>
         </h4>
       </div>
       <div class="contact_form">
         <form action=""></form>
       </div>
     </div>
-    <div class="col-xl-8 col-lg-8 col-sm-12 mb-4" style="height: 600px">
-      <div class="container-contact100" style="margin: auto !important">
+    <div class="col-xl-8 col-lg-8 col-sm-12 mb-4 Bg" style="height: 600px;  margin-top: 100px !important;">
+      <div class="container-contact100" style="margin: auto !important;">
         <div class="wrap-contact100">
           <form action="emailSender.php" method="POST" autocomplete="off" class="contact100-form validate-form">
             <span class="contact100-form-title"> <?php echo $sendusmessage ?> </span>
@@ -444,6 +468,8 @@
       </script>
     </div>
   </div>
+</div>
+
   <!--------------------------------------/Contact--------------------------------------------->
 
   <!--------------------------------------Footer--------------------------------------------->
@@ -453,6 +479,15 @@
   <script>
     AOS.init();
   </script>
+
+  <script type="text/javascript">
+  $(function () {
+  $(document).scroll(function () {
+    var $nav = $(".navbar-fixed-top");
+    $nav.toggleClass('scrolled', $(this).scrollTop() > $nav.height());
+  });
+});
+</script>
 </body>
 
 </html>
