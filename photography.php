@@ -1,9 +1,22 @@
 <?php include 'globalVariable.php'; ?>
 
 <?php
+$imageType = "both";
+$select_query = "";
+if (isset($_GET['imageType'])) {
+  $imageType = $_GET['imageType'];
+}
+if ($imageType == "blackwhite") {
+  $imageType = "blackwhite";
+} elseif ($imageType == "colored") {
+  $imageType = "colored";
+} elseif ($imageType == "both") {
+  $imageType = "both";
+}
+
 #connect
 $conn = mysqli_connect("localhost", $dbUser, $dbPassword, $DbName);
-$select_query = "SELECT `photography_title`, `photography_image_path`, photography_author.author_name, photography_category.category_name FROM `photography` 
+$select_query = "SELECT `photography_title`, `photography_image_path`, image_type, photography_author.author_name, photography_category.category_name FROM photography 
 LEFT JOIN  photography_author on photography_author.author_ID = photography.photography_author_id
 left JOIN photography_category on photography_category.category_ID = photography.photography_category_id";
 mysqli_query($conn, 'SET CHARACTER SET utf8');
@@ -97,10 +110,8 @@ while ($row = mysqli_fetch_all($res)) {
     <div class="col-xl-2" style=" padding: 20px !important;">
       <h2> <?php echo $category ?></h2>
       <div style="width: 150px; height: 2px; background-color: #234140;"></div><br>
-      <label for="myCheck1"> <?php echo $blackwhite ?>:</label>
-      <input type="checkbox" id="myCheck1" onclick="generateGallery()"><br>
-      <label for="myCheck2"> <?php echo $colored ?>:</label>
-      <input type="checkbox" id="myCheck2" onclick="generateGallery()"><br>
+      <a href="photography.php?lang=<?php echo $lang ?>&imageType=blackwhite"> <?php echo $blackwhite ?></a><br>
+      <a href="photography.php?lang=<?php echo $lang ?>&imageType=colored"> <?php echo $colored ?></a><br>
       <label for="myCheck3"> <?php echo $portrait ?>:</label>
       <input type="checkbox" id="myCheck3" onclick="generateGallery()"><br>
       <label for="myCheck4"> <?php echo $landscape ?>:</label>
@@ -116,18 +127,16 @@ while ($row = mysqli_fetch_all($res)) {
     </div>
     <!-- endd -->
     <script>
-      var blackwhite = document.getElementById("myCheck1");
-      var colored = document.getElementById("myCheck2");
       var portrait = document.getElementById("myCheck3");
       var landscape = document.getElementById("myCheck4");
       var abstract = document.getElementById("myCheck5");
       var other = document.getElementById("myCheck6");
+      var imageType = "<?php echo $imageType ?>";
+
 
       function generateGallery() {
         var categoryArray = [];
         var data = <?php echo json_encode($data, JSON_UNESCAPED_UNICODE); ?>;
-        if (blackwhite.checked) categoryArray.push("შავ-თეთრი");
-        if (colored.checked) categoryArray.push("ფერადი");
         if (portrait.checked) categoryArray.push("პორტრეტი");
         if (landscape.checked) categoryArray.push("პეიზაჟი");
         if (abstract.checked) categoryArray.push("აბსტრაქცია");
@@ -136,12 +145,18 @@ while ($row = mysqli_fetch_all($res)) {
         var html = '<div class="gallery "style="padding: 20px !important;">';
         html += '<div id="test1">';
         // თუ გვერდი პირველად იტვირთება ჩეკბოქსები ავტომატურად ითვლება მონიშნულად
-        if (!categoryArray.length) categoryArray = ["შავ-თეთრი", "ფერადი", "პორტრეტი", "პეიზაჟი", "აბსტრაქცია", "სხვა"];
+        if (!categoryArray.length) categoryArray = ["პორტრეტი", "პეიზაჟი", "აბსტრაქცია", "სხვა"];
         for (i = 0; i < data.length; i++) {
           var photographyName = data[i][0];
           var photographyPath = data[i][1];
-          var photographyAuthor = data[i][2];
-          var paintCategory = data[i][3];
+          var photographyImageType = data[i][2];
+          var photographyAuthor = data[i][3];
+          var paintCategory = data[i][4];
+          console.log(photographyImageType);
+          console.log(imageType);
+          if (imageType != "both") {
+            if (photographyImageType != imageType) continue;
+          }
           for (category of categoryArray) {
             if (paintCategory == category) {
               html += '<a  href="' + photographyPath + '" data-lightbox="mygallery" data-title="' + photographyName + " " + 'ავტორი: ' + photographyAuthor + '">';
