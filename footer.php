@@ -1,8 +1,23 @@
   <!--------------------------------------FOOTER--------------------------------------------->
-  <footer class="page-footer font-small indigo">
-      <div class="footer-copyright right py-3">
-          © 2020 Copyright:
-          <a class="mr-5" href="https://mdbootstrap.com/"> MDBootstrap.com</a>
-      </div>
-  </footer>
+ <div class="row footer" style="margin: 0px !important;">
+  
+      	<div class="col-xl-4 col-lg-4 col-sm-4 contact_information text-center mt-1" >
+	        <p>
+	        	<?php echo $Loc ?>;
+	        	<?php echo $addres ?>
+
+	        </p>
+    	</div>
+    	<div class="col-xl-4 col-lg-4 col-sm-4 contact_information text-center mt-1" >
+	      <a href="https://www.facebook.com/nini.shainidze.90/" target="_blank"><img src="icons/icons8-facebook-30.png" /></a>
+          <a href="https://www.facebook.com/nini.shainidze.90/" target="_blank"><img src="icons/icons8-instagram-30.png" /></a>
+          <a href="https://www.facebook.com/nini.shainidze.90/" target="_blank"><img src="icons/icons8-pinterest-30.png" /></a>
+   		 </div>
+   		<div class="col-xl-4 col-lg-4 col-sm-4 contact_information text-center mt-1" >
+        <p>
+        	<?php echo $ourEmail ?>; <?php echo $ourPhone ?>
+        </p>
+    	</div>
+  
+  </div>
   <!--- ------------------------------------/FOOTER--------------------------------------------->
