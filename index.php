@@ -3,7 +3,15 @@
 
 <body style="background-image: url(images/bg.png); background-size: 100%;">
   <div class="title" style="text-align: center !important;">
-    <h1 class=" mt-3" >ARTBLOG</h1>
+    <h1>
+      <span>A</span>
+      <span>R</span>
+      <span>T</span>
+      <span>B</span>
+      <span>L</span>
+      <span>O</span>
+      <span>G</span>
+    </h1>
   </div>
 
   <?php include 'header.php'; ?>
@@ -376,56 +384,6 @@
 
   <!--------------------------------------/Events--------------------------------------------->
 
-
- <!-- 
-
-<div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
-  <div class="carousel-inner">
-    <div class="carousel-item active " style="margin-left: 20% !important; ">
-      <img class="d-block " src="images/event.jpg" alt="First slide"
-      style="width: 300px; height: 500px; ">
-      
-      <p style="margin-top: -20% !important;  margin-left: 30% !important;  ">
-        <b>todays events</b><br><br>
-        Lorem Ipsum has been the industry's standard dummy text ever <br>since the 1500s, when an unknown printer took a galley of type <br>and scrambled it to make a type specimen book. It has survived<br> not only five centuries, but also the   leap into electronic<br> typesetting, remaining essentially unchanged.<br><br>
-            <?php echo $date ?>: 20/10/2020 <br>
-            <?php echo $time ?>: 14:00 <br>
-            <?php echo $location ?>: kolonadebtan
-      </p>
-    
-    </div>
-    <div class="carousel-item"style="margin-left: 20% !important; ">
-       <img class="d-block " src="images/event.jpg" alt="First slide"
-      style="width: 300px; height: 500px;">
-       <p style="margin-top: -20% !important; margin-left: 30% !important;">
-        <b>todays events</b><br><br>
-        Lorem Ipsum has been the industry's standard dummy text ever <br>since the 1500s, when an unknown printer took a galley of type <br>and scrambled it to make a type specimen book. It has survived<br> not only five centuries, but also the   leap into electronic<br> typesetting, remaining essentially unchanged.<br><br>
-            <?php echo $date ?>: 20/10/2020 <br>
-            <?php echo $time ?>: 14:00 <br>
-            <?php echo $location ?>: kolonadebtan
-      </p>
-    </div>
-    <div class="carousel-item"style="margin-left: 20% !important; ">
-       <img class="d-block " src="images/event.jpg" alt="First slide"
-      style="width: 300px; height: 500px;">
-       <p style="margin-top: -20% !important; margin-left: 30% !important;">
-        <b>todays events</b><br><br>
-       Lorem Ipsum has been the industry's standard dummy text ever <br>since the 1500s, when an unknown printer took a galley of type <br>and scrambled it to make a type specimen book. It has survived<br> not only five centuries, but also the   leap into electronic<br> typesetting, remaining essentially unchanged.<br><br>
-            <?php echo $date ?>: 20/10/2020 <br>
-            <?php echo $time ?>: 14:00 <br>
-            <?php echo $location ?>: kolonadebtan
-      </p>
-    </div>
-  </div>
-  <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
-    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-    <span class="sr-only">Previous</span>
-  </a>
-  <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
-    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-    <span class="sr-only">Next</span>
-  </a>
-</div> -->
 
 
   <!--------------------------------------Contact--------------------------------------------->
