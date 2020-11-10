@@ -15,16 +15,18 @@ while ($row = mysqli_fetch_all($res)) {
 
 <!DOCTYPE html>
 <html>
-<?php include 'header.php'; ?>
-
 <head>
   <script type="text/javascript" src="js/lightbox-plus-jquery.min.js"></script>
   <link rel="stylesheet" type="text/css" href="css/lightbox.min.css">
 </head>
 
-<body>
-  <div style="height: 50px;"></div>
+<body  style="background-image: url(images/bg.png); background-size: 100%;">
 
+  <div style="width: 100%; height: 2px; background-color: black;"></div>
+<?php include 'header.php'; ?>
+<div style="width: 100%; height: 2px; background-color: black;"></div><br>
+
+ 
   <!-- ------------------------------------gallery------------------------ -->
   <div class="row mb-2" style="margin-right: 14vh !important; margin-left: 14vh !important">
     <svg width="220" height="100">
@@ -91,6 +93,7 @@ while ($row = mysqli_fetch_all($res)) {
       </text>
     </svg>
   </div>
+
   <div class="row  mb-5 main_gallery">
     <div class="col-xl-2" style=" padding: 20px !important;">
       <h2> <?php echo $category ?></h2>

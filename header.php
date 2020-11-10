@@ -35,7 +35,12 @@ require_once("language/" . $lang . ".php");
 <body>
 
     <!-------------------------------------------------Navbar------------------------------------------>
+    
+    
+
+
      <nav class="navbar navbar-expand-lg  sticky-top navbar-fixed-top">
+        
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
             <img src="icons/icons8-pull-down-60.png" />
         </button>

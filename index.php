@@ -4,6 +4,7 @@
 <body style="background-image: url(images/bg.png); background-size: 100%;">
   <div class="title" style="text-align: center !important;">
     <h1>
+      <?php include 'mainIcon.php'; ?>
       <span>A</span>
       <span>R</span>
       <span>T</span>
@@ -13,7 +14,6 @@
       <span>G</span>
     </h1>
   </div>
-
   <?php include 'header.php'; ?>
   
   <!----------------------------------------------Main img--------------------------------- -->
